@@ -123,8 +123,22 @@ input, select, textarea {
 		}
 
 	strong, b {
-		color: #777;
+		/* color: #777; */
+		color: #9e4f4f;
 		font-weight: 700;
+	}
+
+	/* hyebin added */
+	.venue {
+		color: #6a7ba2;
+		font-weight: 600;
+	}
+	.logo {
+		width: 18px;
+		height: 18px;
+		vertical-align: middle;
+		margin-left: 0.4em;
+		opacity: 0.8;
 	}
 
 	em, i {
@@ -2635,14 +2649,16 @@ input, select, textarea {
 			input[type="reset"].primary:hover,
 			input[type="button"].primary:hover,
 			.button.primary:hover {
-				background-color: #5ed0b1;
+				/* background-color: #5ed0b1; */
+				background-color: #333333;
 			}
 
 			input[type="submit"].primary:active,
 			input[type="reset"].primary:active,
 			input[type="button"].primary:active,
 			.button.primary:active {
-				background-color: #39c29d;
+				/* background-color: #39c29d; */
+				background-color: #333333;
 			}
 
 		input[type="submit"].disabled, input[type="submit"]:disabled,
@@ -2731,7 +2747,7 @@ input, select, textarea {
 			}
 
 		#header header p {
-			color: #b7eadc;
+			color: #333333;
 		}
 
 		#header a {
@@ -2783,7 +2799,8 @@ input, select, textarea {
 			}
 
 				#header > footer .icons li a {
-					color: #b7eadc;
+					/* color: #b7eadc; */
+					color: #333333;
 				}
 
 		#header > nav {
