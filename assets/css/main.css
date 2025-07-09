@@ -125,11 +125,13 @@ input, select, textarea {
 	strong, b {
 		/* color: #777; */
 		color: #9e4f4f;
+		/* color: #6a7ba2; */
 		font-weight: 700;
 	}
 
 	/* hyebin added */
 	.venue {
+		/* color: #9e4f4f; */
 		color: #6a7ba2;
 		font-weight: 600;
 	}
@@ -150,7 +152,8 @@ input, select, textarea {
 	}
 
 	h1, h2, h3, h4, h5, h6 {
-		color: #a37e7e;
+		/* color: #a37e7e; */
+		color: #333333;
 		font-weight: 700;
 		line-height: 1em;
 		margin: 0 0 0.5625em 0;
