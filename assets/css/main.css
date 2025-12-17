@@ -124,7 +124,7 @@ input, select, textarea {
 
 	strong, b {
 		/* color: #777; */
-		color: #9e4f4f;
+		color: #6a7ba2;
 		/* color: #6a7ba2; */
 		font-weight: 700;
 	}
@@ -2728,7 +2728,7 @@ input, select, textarea {
 		-webkit-justify-content: space-between;
 		-ms-justify-content: space-between;
 		justify-content: space-between;
-		background: #e9e5df;
+		background: #e8eef5;
 		color: #333333;
 		/* background: #4acaa8; */
 		/* color: #d2f2e9; */
@@ -2824,9 +2824,7 @@ input, select, textarea {
 
 				#header > nav ul li {
 					/* border-top: solid 2px #5ccfb1; */
-					border-top: solid 2px #d6d1c7;
-					display: block;
-					padding: 0;
+				border-top: solid 2px #ffffff;
 				}
 
 					#header > nav ul li a {
@@ -2844,9 +2842,7 @@ input, select, textarea {
 
 						#header > nav ul li a.active {
 							background: #fff;
-							color: #a37e7e !important;
-							/* color: #4acaa8 !important; */
-							/* 왼쪽 버튼색 임 */
+						color: #6a7ba2 !important;
 						}
 
 					#header > nav ul li:first-child {
@@ -3265,20 +3261,19 @@ input, select, textarea {
 	line-height: 1.4;
 }
 
-.pub-text .authors {
-	font-size: 0.85em;
+.pub-text .authors strong {
+	font-weight: 600;
+	color: inherit;
 }
-
-.pub-text .venue {
 	font-size: 0.85em;
-	color: #7f8c8d;
+	color: #6a7ba2;
 	font-weight: 500;
 }
 
 .pub-text .venue a {
 	margin-left: 0.3em;
 	text-decoration: none;
-	color: #3498db;
+	color: inherit;
 	font-weight: 500;
 }
 
