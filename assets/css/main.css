@@ -3219,3 +3219,122 @@ input, select, textarea {
 		/* 기타 기존 스타일 생략 */
 
 	}
+
+/* Publications Section Styles */
+.pub-item {
+	margin-bottom: 1.5em;
+	padding: 1em 0;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pub-item:last-child {
+	border-bottom: none;
+}
+
+.pub-content {
+	display: flex;
+	align-items: center;
+	gap: 2em;
+}
+
+.pub-image {
+	flex: 0 0 120px;
+}
+
+.pub-image img {
+	width: 100%;
+	height: auto;
+	aspect-ratio: 4/3;
+	object-fit: cover;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pub-text {
+	flex: 1;
+	font-size: 0.95em;
+}
+
+.pub-text p {
+	margin: 0.2em 0;
+}
+
+.pub-text .title {
+	font-size: 0.95em;
+	font-weight: 600;
+	line-height: 1.4;
+}
+
+.pub-text .authors {
+	font-size: 0.85em;
+}
+
+.pub-text .venue {
+	font-size: 0.85em;
+	color: #7f8c8d;
+	font-weight: 500;
+}
+
+.pub-text .venue a {
+	margin-left: 0.3em;
+	text-decoration: none;
+	color: #3498db;
+	font-weight: 500;
+}
+
+.pub-text .venue a:hover {
+	text-decoration: underline;
+}
+
+.pub-text .links {
+	font-size: 0.85em;
+}
+
+.pub-text .links a {
+	margin-right: 0.5em;
+	text-decoration: none;
+	color: #3498db;
+	font-weight: 500;
+}
+
+.pub-text .links a:hover {
+	text-decoration: underline;
+}
+
+.pub-text .note {
+	font-size: 0.8em;
+	color: #95a5a6;
+	font-style: italic;
+}
+
+/* About Me Section */
+.about-text {
+	font-size: 0.95em;
+	line-height: 1.6;
+}
+
+/* Work Experiences & Education Section */
+.work-list {
+	font-size: 0.95em;
+}
+
+.work-list li {
+	line-height: 1.6;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+	.pub-content {
+		flex-direction: column;
+		gap: 1em;
+	}
+	
+	.pub-image {
+		flex: none;
+		align-self: center;
+	}
+	
+	.pub-image img {
+		max-width: 250px;
+	}
+}
