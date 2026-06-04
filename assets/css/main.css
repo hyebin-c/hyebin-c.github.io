@@ -3270,6 +3270,15 @@ input, select, textarea {
 	color: inherit;
 }
 
+.pub-text .authors a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.pub-text .authors a:hover {
+	text-decoration: underline;
+}
+
 .pub-text .venue {
 	font-size: 0.85em;
 	color: #6a7ba2;
