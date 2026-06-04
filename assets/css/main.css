@@ -2737,7 +2737,7 @@ input, select, textarea {
 		position: fixed;
 		text-align: center;
 		top: 0;
-		width: 23em;
+		width: 20em;
 		/* right: 0; */
 		left: 0;
 		right: auto;
@@ -2853,7 +2853,7 @@ input, select, textarea {
 
 	#wrapper {
 		background: #fff;
-		/* padding-right: 23em; */
+		/* padding-right: 20em; */
 		padding-right: 0;
 		padding-left: 20em;
 	}
@@ -2919,7 +2919,7 @@ input, select, textarea {
 		/* Header */
 
 			#header {
-				width: 21em;
+				width: 19em;
 			}
 
 				#header > header {
@@ -2933,8 +2933,9 @@ input, select, textarea {
 		/* Wrapper */
 
 			#wrapper {
-				/* padding-right: 21em; */
+				/* padding-right: 19em; */
 				padding-right: 0;
+				padding-left: 19em;
 			}
 
 		/* Main */
@@ -2958,14 +2959,15 @@ input, select, textarea {
 		/* Header */
 
 			#header {
-				width: 20em;
+				width: 18em;
 			}
 
 		/* Wrapper */
 
 			#wrapper {
-				/* padding-right: 20em; */
+				/* padding-right: 18em; */
 				padding-right: 0em;
+				padding-left: 18em;
 			}
 
 	}
@@ -3018,12 +3020,12 @@ input, select, textarea {
 				overflow-y: auto;
 				position: fixed;
 				top: 0;
-				width: 23em;
+				width: 20em;
 				z-index: 10002;
-				-moz-transform: translateX(-23em);
-				-webkit-transform: translateX(-23em);
-				-ms-transform: translateX(-23em);
-				transform: translateX(-23em);
+				-moz-transform: translateX(-20em);
+				-webkit-transform: translateX(-20em);
+				-ms-transform: translateX(-20em);
+				transform: translateX(-20em);
 				/* right: 0; */
 				left: 0;
 				right: auto;
@@ -3139,14 +3141,14 @@ input, select, textarea {
 					}
 
 			body.header-visible #wrapper, body.header-visible #titleBar {
-				/* -moz-transform: translateX(-23em);
-				-webkit-transform: translateX(-23em);
-				-ms-transform: translateX(-23em);
-				transform: translateX(-23em); */
-				-moz-transform: translateX(23em);
-				-webkit-transform: translateX(23em);
-				-ms-transform: translateX(23em);
-				transform: translateX(23em);
+				/* -moz-transform: translateX(-20em);
+				-webkit-transform: translateX(-20em);
+				-ms-transform: translateX(-20em);
+				transform: translateX(-20em); */
+				-moz-transform: translateX(20em);
+				-webkit-transform: translateX(20em);
+				-ms-transform: translateX(20em);
+				transform: translateX(20em);
 			}
 
 			body.header-visible #header {
