@@ -3218,8 +3218,8 @@ input, select, textarea {
 
 /* Publications Section Styles */
 .pub-item {
-	margin-bottom: 1.5em;
-	padding: 1em 0;
+	margin-bottom: 0.8em;
+	padding: 0.55em 0;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -3252,22 +3252,28 @@ input, select, textarea {
 }
 
 .pub-text p {
-	margin: 0.2em 0;
+	margin: 0;
+	line-height: 1.25;
+}
+
+.pub-text p + p {
+	margin-top: 0.6em;
 }
 
 .pub-text .title {
 	font-size: 0.95em;
 	font-weight: 600;
-	line-height: 1.4;
 }
 
 .pub-text .authors strong {
 	font-weight: 600;
 	color: inherit;
 }
+
+.pub-text .venue {
 	font-size: 0.85em;
 	color: #6a7ba2;
-	font-weight: 500;
+	font-weight: 600;
 }
 
 .pub-text .venue a {
@@ -3279,6 +3285,13 @@ input, select, textarea {
 
 .pub-text .venue a:hover {
 	text-decoration: underline;
+}
+
+.pub-text .venue .link-placeholder {
+	margin-left: 0.3em;
+	color: inherit;
+	font-weight: 500;
+	opacity: 0.65;
 }
 
 .pub-text .links {
