@@ -285,6 +285,14 @@ h3 {
 	}
 }
 
+#titleBar .title {
+	overflow: hidden;
+	padding-left: 76px;
+	padding-right: 1em;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
 @media (prefers-color-scheme: dark) {
 	html {
 		background: #111722;
