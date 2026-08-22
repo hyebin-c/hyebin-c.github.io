@@ -167,6 +167,14 @@ h3 {
 	padding: 0 0.55em;
 }
 
+.flag-emoji {
+	display: inline-block;
+	height: 1em;
+	margin: 0 0.06em 0 0.12em;
+	vertical-align: -0.12em;
+	width: 1em;
+}
+
 .pub-item {
 	margin-bottom: 0;
 	padding: 1.05em 0;
