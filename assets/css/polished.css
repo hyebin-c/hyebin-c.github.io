@@ -9,7 +9,7 @@ body,
 input,
 select,
 textarea {
-	font-size: 10.5pt;
+	font-size: 13pt;
 }
 
 a {
@@ -75,7 +75,7 @@ a:hover {
 #main > section > .container {
 	padding-top: 1.75em;
 	padding-bottom: 1.75em;
-	width: 56em;
+	width: 62em;
 }
 
 #aboutme .image.main {
@@ -101,8 +101,25 @@ h3 {
 
 .about-text {
 	margin-bottom: 0.45em;
-	max-width: 780px;
+	max-width: 860px;
 	line-height: 1.65;
+}
+
+@media screen and (min-width: 1500px) {
+	body,
+	input,
+	select,
+	textarea {
+		font-size: 13pt;
+	}
+
+	#main > section > .container {
+		width: 68em;
+	}
+
+	.about-text {
+		max-width: 920px;
+	}
 }
 
 .news-panel {
