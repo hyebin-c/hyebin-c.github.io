@@ -169,10 +169,12 @@ h3 {
 
 .flag-emoji {
 	display: inline-block;
-	height: 1em;
-	margin: 0 0.06em 0 0.12em;
-	vertical-align: -0.12em;
-	width: 1em;
+	height: 0.74em !important;
+	margin: 0 0.04em 0 0.12em;
+	max-height: 0.74em;
+	max-width: 0.74em;
+	vertical-align: -0.06em;
+	width: 0.74em !important;
 }
 
 .pub-item {
