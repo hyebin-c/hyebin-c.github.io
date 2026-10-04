@@ -9,7 +9,7 @@
 		<title>Hyebin Cho - AI Researcher</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/polished.css?v=2" />
+		<link rel="stylesheet" href="assets/css/polished.css?v=3" />
 		<meta name="description" content="Projects and research by Hyebin Cho" />
 		<meta name="robots" content="index, follow" />
 		<link rel="canonical" href="https://hyebin-c.github.io/" />
@@ -129,9 +129,42 @@
 						<section id="pub">
 							<div class="container">
 								<h3>Publications</h3>
+								<div class="pub-filters" aria-label="Publication filters">
+									<button type="button" class="active" data-filter="all">All</button>
+									<button type="button" data-filter="selected">Selected</button>
+									<button type="button" data-filter="published">Published</button>
+								</div>
 
 								<!-- Publication 1 -->
-								<div class="pub-item">
+								<div class="pub-item" data-selected="false" data-status="preprint">
+									<div class="pub-content">
+										<div class="pub-image">
+											<img src="images/papers/ordinal.png" alt="Ordinal-Matching Bias Preview" />
+										</div>
+										<div class="pub-text">
+											<p class="title">Uncovering Ordinal-Matching Bias in Audio-Visual LLMs</p>
+											<p class="authors"><a href="https://jihoojung0106.github.io/" target="_blank">Jihoo Jung</a>, <a href="https://art-jang.github.io/" target="_blank">Youngjoon Jang</a>, <strong>Hyebin Cho</strong>, <a href="https://suho-yoo.github.io/" target="_blank">Suho Yoo</a>, <a href="https://mm.kaist.ac.kr/joon/" target="_blank">Joon Son Chung</a></p>
+											<p class="venue"><span class="venue-label">Preprint</span> <a href="https://arxiv.org/abs/2609.34223" target="_blank">📄 paper</a></p>
+										</div>
+									</div>
+								</div>
+
+								<!-- Publication 2 -->
+								<div class="pub-item" data-selected="false" data-status="preprint">
+									<div class="pub-content">
+										<div class="pub-image">
+											<img src="images/papers/omnihome.png" alt="OmniSmartHome Preview" />
+										</div>
+										<div class="pub-text">
+											<p class="title">OmniSmartHome: A Multimodal Reasoning Benchmark for Smart-Home Agents</p>
+											<p class="authors"><a href="https://jihoojung0106.github.io/" target="_blank">Jihoo Jung</a>, <a href="https://suho-yoo.github.io/" target="_blank">Suho Yoo</a>, <a href="https://choijeongsoo.github.io/" target="_blank">Jeongsoo Choi</a>, <strong>Hyebin Cho</strong>, Tae Wook Haam, <a href="https://sites.google.com/view/hyeonggonryu" target="_blank">Hyeonggon Ryu</a>, Sumin Park, <a href="https://mm.kaist.ac.kr/joon/" target="_blank">Joon Son Chung</a></p>
+											<p class="venue"><span class="venue-label">Preprint</span> <a href="https://arxiv.org/abs/2609.32569" target="_blank">📄 paper</a></p>
+										</div>
+									</div>
+								</div>
+
+								<!-- Publication 3 -->
+								<div class="pub-item" data-selected="true" data-status="preprint">
 									<div class="pub-content">
 										<div class="pub-image">
 											<img src="images/papers/tracing.jpg" alt="Tracing Audio Grounding Preview" />
@@ -144,8 +177,8 @@
 									</div>
 								</div>
 
-								<!-- Publication 2 -->
-								<div class="pub-item">
+								<!-- Publication 4 -->
+								<div class="pub-item" data-selected="false" data-status="preprint">
 									<div class="pub-content">
 										<div class="pub-image">
 											<img src="images/papers/outsight.png" alt="Out of Sight Preview" />
@@ -158,8 +191,8 @@
 									</div>
 								</div>
 
-								<!-- Publication 3 -->
-								<div class="pub-item">
+								<!-- Publication 5 -->
+								<div class="pub-item" data-selected="true" data-status="published">
 									<div class="pub-content">
 										<div class="pub-image">
 											<img src="images/papers/conflict.png" alt="Who Wins the Conflict Preview" />
@@ -172,8 +205,8 @@
 									</div>
 								</div>
 
-								<!-- Publication 4 -->
-								<div class="pub-item">
+								<!-- Publication 6 -->
+								<div class="pub-item" data-selected="true" data-status="published">
 									<div class="pub-content">
 										<div class="pub-image">
 											<img src="images/papers/aspl.png" alt="Acoustic Prompting Preview" />
@@ -186,8 +219,8 @@
 									</div>
 								</div>
 
-								<!-- Publication 5 -->
-								<div class="pub-item">
+								<!-- Publication 7 -->
+								<div class="pub-item" data-selected="true" data-status="published">
 									<div class="pub-content">
 										<div class="pub-image">
 											<img src="images/papers/facemat.jpg" alt="FaceMat Preview" />
@@ -200,8 +233,8 @@
 									</div>
 								</div>
 
-								<!-- Publication 6 -->
-								<div class="pub-item">
+								<!-- Publication 8 -->
+								<div class="pub-item" data-selected="false" data-status="published">
 									<div class="pub-content">
 										<div class="pub-image">
 											<img src="images/papers/cfcaset.jpg" alt="CFCA-SET Preview" />
@@ -214,8 +247,8 @@
 									</div>
 								</div>
 
-								<!-- Publication 7 -->
-								<div class="pub-item">
+								<!-- Publication 9 -->
+								<div class="pub-item" data-selected="false" data-status="published">
 									<div class="pub-content">
 										<div class="pub-image">
 											<img src="images/papers/bokeh.png" alt="Bokeh Effect Preview" />
@@ -679,6 +712,34 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				(function () {
+					var filters = document.querySelectorAll('.pub-filters button');
+					var publications = document.querySelectorAll('.pub-item');
+
+					function applyFilter(filter) {
+						publications.forEach(function (item) {
+							var show = filter === 'all'
+								|| (filter === 'selected' && item.dataset.selected === 'true')
+								|| (filter === 'published' && item.dataset.status === 'published');
+
+							item.classList.toggle('is-hidden', !show);
+						});
+
+						filters.forEach(function (button) {
+							button.classList.toggle('active', button.dataset.filter === filter);
+						});
+					}
+
+					filters.forEach(function (button) {
+						button.addEventListener('click', function () {
+							applyFilter(button.dataset.filter);
+						});
+					});
+
+					applyFilter('all');
+				}());
+			</script>
 
 	</body>
 </html>
