@@ -206,6 +206,14 @@ h3 {
 	color: #273a5f;
 }
 
+.pub-footnote {
+	align-self: center;
+	color: #9aa3b1;
+	font-size: 0.66em;
+	font-weight: 400;
+	margin-left: auto;
+}
+
 .pub-item {
 	margin-bottom: 0;
 	padding: 1.05em 0;
@@ -353,6 +361,7 @@ h3 {
 	white-space: nowrap;
 }
 
+/*
 @media (prefers-color-scheme: dark) {
 	html {
 		background: #111722;
@@ -499,6 +508,10 @@ h3 {
 		color: #ffffff;
 	}
 
+	.pub-footnote {
+		color: #8f9bb0;
+	}
+
 	.pub-text .venue a {
 		background: rgba(185, 200, 228, 0.18);
 		border-color: transparent;
@@ -557,3 +570,4 @@ h3 {
 		color: #eef3fb;
 	}
 }
+*/
