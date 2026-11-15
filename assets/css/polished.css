@@ -62,6 +62,16 @@ a:hover {
 	background: #e4e9f1;
 }
 
+.x-mark {
+	fill: none;
+	height: 1.12em;
+	stroke: currentColor;
+	stroke-linecap: round;
+	stroke-width: 2.2;
+	vertical-align: -0.1em;
+	width: 1.12em;
+}
+
 #nav ul li a.active {
 	background: #dfe5ee;
 	color: #222936 !important;
@@ -268,8 +278,12 @@ h3 {
 }
 
 .pub-text .venue {
+	align-items: center;
 	color: #5b6f9e;
+	display: flex;
 	font-size: 0.82em;
+	flex-wrap: wrap;
+	gap: 0.45em;
 	letter-spacing: 0.01em;
 }
 
@@ -291,18 +305,84 @@ h3 {
 	color: #4f628e;
 	display: inline-block;
 	line-height: 1.8;
-	margin-left: 0.55em;
+	margin-left: 0;
 	padding: 0 0.65em;
+	text-decoration: none;
+	transition: background-color 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+}
+
+.pub-text .venue a:hover {
+	background: #dfe5ee;
+	border-color: #c6d1e1;
+	color: #273a5f !important;
+	text-decoration: none;
+}
+
+.work-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
 .work-list li {
 	border-bottom: 1px solid #edf0f4;
-	line-height: 1.25;
-	padding: 0.22em 0;
+	line-height: 1.4;
+	padding: 0.4em 0;
 }
 
 .work-list li:last-child {
 	border-bottom: 0;
+}
+
+.work-list strong {
+	color: #273a5f;
+}
+
+.activity-list li {
+	display: grid;
+	gap: 1.2em;
+	grid-template-columns: 9.5em 1fr;
+}
+
+.inline-more-toggle {
+	background: transparent;
+	border: 0;
+	border-bottom: 1px dotted #8d9bb6;
+	border-radius: 0;
+	box-shadow: none;
+	color: #5b6f9e;
+	cursor: pointer;
+	display: inline;
+	font: inherit;
+	font-size: 0.88em;
+	font-weight: 700;
+	height: auto;
+	letter-spacing: 0;
+	line-height: inherit;
+	margin-left: 0.3em;
+	padding: 0;
+	text-transform: none;
+	vertical-align: baseline;
+}
+
+.inline-more-toggle:hover,
+.inline-more-toggle:focus {
+	background: transparent;
+	color: #273a5f;
+}
+
+.inline-more-content {
+	color: #687386;
+	font-size: 0.95em;
+}
+
+.inline-more-content:not([hidden]) {
+	display: block;
+	margin-top: 0.18em;
+}
+
+.inline-more-content > span {
+	display: block;
 }
 
 #footer {
@@ -324,6 +404,12 @@ h3 {
 	.news-panel {
 		max-height: 7.1em;
 	}
+
+	.activity-list li {
+		gap: 0.15em;
+		grid-template-columns: 1fr;
+	}
+
 }
 
 @media (max-width: 768px) {

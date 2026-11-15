@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Who Wins the Conflict? Mechanistic Interpretability of Text Bias in Audio LLMs</title>
+		<meta name="description" content="A visual summary of why Audio LLMs favor text over conflicting acoustic evidence and how back-patching restores balance." />
+		<link rel="canonical" href="https://hyebin-c.github.io/projects/conflict/" />
+		<meta property="og:title" content="Who Wins the Conflict?" />
+		<meta property="og:description" content="Why Audio LLMs favor text over conflicting acoustic evidence—and how back-patching restores balance." />
+		<meta property="og:image" content="https://hyebin-c.github.io/images/projects/conflict/overview.png" />
+		<meta property="og:url" content="https://hyebin-c.github.io/projects/conflict/" />
+		<meta property="og:type" content="website" />
+		<link rel="stylesheet" href="../../assets/css/project-page.css" />
+	</head>
+	<body class="theme-conflict">
+		<nav class="topbar" aria-label="Project navigation">
+			<div class="topbar-inner">
+				<a class="brand" href="../../">Hyebin Cho</a>
+				<div class="topbar-links">
+					<a href="#tldr">TL;DR</a>
+					<a href="#motivation">Motivation</a>
+					<a href="#findings">Findings</a>
+					<a href="#question">Question</a>
+					<a href="#answer">Answer</a>
+					<a href="#citation">Citation</a>
+					<a href="https://arxiv.org/abs/2606.18924" target="_blank" rel="noreferrer">Paper ↗</a>
+				</div>
+			</div>
+		</nav>
+
+		<header class="hero">
+			<div class="hero-inner">
+				<p class="eyebrow">EMNLP 2026 · Mechanistic Interpretability</p>
+				<h1 class="conflict-title">
+					<span>Who Wins the Conflict?</span>
+					<span>Mechanistic Interpretability of</span>
+					<span>Text Bias in Audio LLMs</span>
+				</h1>
+				<p class="authors"><strong>Hyebin Cho</strong> · Suho Yoo · Jaehyuk Jang · Changick Kim · Joon Son Chung</p>
+				<p class="affiliation">Korea Advanced Institute of Science and Technology (KAIST)</p>
+				<p class="venue">EMNLP 2026 Main</p>
+				<div class="button-row">
+					<a class="button" href="https://arxiv.org/abs/2606.18924" target="_blank" rel="noreferrer">📄 Paper</a>
+				</div>
+			</div>
+		</header>
+
+		<main>
+			<section class="section white" id="tldr">
+				<div class="container wide">
+					<p class="section-label">TL;DR</p>
+					<p class="tldr">When audio and text conflict, Audio LLMs usually follow text.<br />The audio is not erased—it is actively suppressed, and back-patching can restore its influence without training.</p>
+					<figure class="figure">
+						<div class="figure-frame">
+							<img src="../../images/projects/conflict/overview.png" alt="Overview of conflict construction, modality circuit discovery, causal analysis, and back-patching" />
+						</div>
+						<figcaption>From a text–audio conflict to circuit analysis and a training-free intervention.</figcaption>
+					</figure>
+				</div>
+			</section>
+
+			<section class="section" id="motivation">
+				<div class="container wide two-column">
+					<div>
+						<p class="section-label">Motivation</p>
+						<h2>Two modalities. Two answers.</h2>
+						<p class="lead">Audio LLMs combine sound and text, but what happens when those inputs directly contradict each other?</p>
+						<p>Across controlled conflicts, representative models consistently lean toward the textual statement—even when the acoustic evidence says otherwise.</p>
+					</div>
+					<div class="conflict-demo">
+						<div class="signal audio"><span class="signal-label">Audio says</span>“Open stations are shown in normal font.”</div>
+						<div class="signal text"><span class="signal-label">Text says</span>“Closed stations are shown in normal font.”</div>
+						<div class="model-answer"><span class="model-icon" aria-hidden="true">🤖</span><span>Model answer: <strong>Closed</strong></span></div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section white" id="findings">
+				<div class="container wide">
+					<p class="section-label">Mechanistic Findings</p>
+					<h2>What happens inside the model?</h2>
+					<div class="answer-grid">
+						<article class="answer-card">
+							<span class="answer-number">1</span>
+							<h3>Text dominance is consistent</h3>
+							<p>Across models and conflict types, predictions favor textual evidence over contradictory audio.</p>
+						</article>
+						<article class="answer-card">
+							<span class="answer-number">2</span>
+							<h3>Separate early, shared late</h3>
+							<p>Text and audio begin on distinct functional pathways, then converge into a shared semantic space in deeper layers.</p>
+						</article>
+						<article class="answer-card">
+							<span class="answer-number">3</span>
+							<h3>Audio is suppressed, not erased</h3>
+							<p>The acoustic representation remains recoverable. The text circuit actively suppresses its influence on the answer.</p>
+						</article>
+					</div>
+
+					<div class="metric-heading">
+						<h3>Audio-choice accuracy under text–audio conflict</h3>
+						<p>Closed-set A/B evaluation averaged across adjective, negation, number, and time conflicts.<br />Higher means the model follows the audio rather than the contradictory text.</p>
+					</div>
+
+					<div class="comparison">
+						<div class="comparison-panel">
+							<h3>Qwen2-Audio</h3>
+							<div class="bar-row"><span class="bar-label">Original model</span><div class="bar-track"><div class="bar-fill audio" style="width: 39%"></div></div><span class="bar-value">39%</span></div>
+							<div class="bar-row"><span class="bar-label">Text circuit removed</span><div class="bar-track"><div class="bar-fill audio" style="width: 78%"></div></div><span class="bar-value">78%</span></div>
+						</div>
+						<div class="comparison-panel">
+							<h3>Ultravox</h3>
+							<div class="bar-row"><span class="bar-label">Original model</span><div class="bar-track"><div class="bar-fill audio" style="width: 28%"></div></div><span class="bar-value">28%</span></div>
+							<div class="bar-row"><span class="bar-label">Text circuit removed</span><div class="bar-track"><div class="bar-fill audio" style="width: 90%"></div></div><span class="bar-value">90%</span></div>
+						</div>
+					</div>
+					<p class="evidence-caption">Average audio-consistent accuracy across four conflict types.<br />Removing the text circuit reveals that acoustic information is still recoverable.</p>
+				</div>
+			</section>
+
+			<section class="section" id="question">
+				<div class="container">
+					<div class="question-box">
+						<p class="section-label">Question</p>
+						<h2>Can we bring the suppressed audio signal back—<br />without retraining the model?</h2>
+					</div>
+				</div>
+			</section>
+
+			<section class="section white" id="answer">
+				<div class="container wide">
+					<p class="section-label">Answer</p>
+					<h2><span class="method-name">Back-patching:</span><br />Route mature audio representations back.</h2>
+					<p class="lead">Back-patching takes audio representations from late layers and injects them into earlier layers, amplifying acoustic evidence before text can suppress it.</p>
+
+					<div class="language-strip">
+						<strong>Evaluated across 8 languages and 4 conflict types</strong>
+						<div class="language-chips" aria-label="Evaluated languages">
+							<span class="language-chip">AR</span>
+							<span class="language-chip">DE</span>
+							<span class="language-chip">EN</span>
+							<span class="language-chip">FR</span>
+							<span class="language-chip">IT</span>
+							<span class="language-chip">JA</span>
+							<span class="language-chip">PT</span>
+							<span class="language-chip">ZH</span>
+						</div>
+					</div>
+
+					<div class="result-block">
+						<p class="result-label">Average audio-choice accuracy under conflict</p>
+						<div class="result-arrow" aria-label="Average audio-choice accuracy under conflict improves from 0.35 to 0.46 with back-patching">
+							<div><strong>0.35</strong><span>Before back-patching</span></div>
+							<div class="arrow">→</div>
+							<div><strong>0.46</strong><span>After back-patching</span></div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section white" id="citation">
+				<div class="container wide">
+					<p class="section-label">Citation</p>
+					<div class="citation-wrap">
+						<button class="copy-button" type="button" data-copy-target="#conflict-bibtex" aria-label="Copy BibTeX"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="5" y="5" width="8" height="8" rx="1.5"></rect><path d="M3 11H2.5A1.5 1.5 0 0 1 1 9.5v-7A1.5 1.5 0 0 1 2.5 1h7A1.5 1.5 0 0 1 11 2.5V3"></path></svg><span class="copy-label">Copy</span></button>
+						<pre class="citation" id="conflict-bibtex">@inproceedings{cho-etal-2026-wins,
+  title     = {Who Wins the Conflict? Mechanistic Interpretability of Text Bias in Audio {LLM}s},
+  author    = {Cho, Hyebin and Yoo, Suho and Jang, Jaehyuk and Kim, Changick and Chung, Joon Son},
+  booktitle = {Proceedings of the 2026 Conference on Empirical Methods in Natural Language Processing},
+  year      = {2026},
+  pages     = {47781--47799},
+  doi       = {10.18653/2026.emnlp-main.2099}
+}</pre>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer>© 2026 Hyebin Cho · Built as a concise visual guide to the paper.</footer>
+		<script src="../../assets/js/project-page.js"></script>
+	</body>
+</html>

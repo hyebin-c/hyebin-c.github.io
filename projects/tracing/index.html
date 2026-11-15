@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Tracing Audio Grounding and Answer Selection in Audio LLMs</title>
+		<meta name="description" content="A visual summary of how training changes audio grounding and answer selection inside Audio LLMs." />
+		<link rel="canonical" href="https://hyebin-c.github.io/projects/tracing/" />
+		<meta property="og:title" content="Tracing Audio Grounding and Answer Selection in Audio LLMs" />
+		<meta property="og:description" content="Audio shapes candidate answers early. Training strengthens how those choices drive the final prediction later." />
+		<meta property="og:image" content="https://hyebin-c.github.io/images/projects/tracing/overview.png" />
+		<meta property="og:url" content="https://hyebin-c.github.io/projects/tracing/" />
+		<meta property="og:type" content="website" />
+		<link rel="stylesheet" href="../../assets/css/project-page.css" />
+	</head>
+	<body>
+		<nav class="topbar" aria-label="Project navigation">
+			<div class="topbar-inner">
+				<a class="brand" href="../../">Hyebin Cho</a>
+				<div class="topbar-links">
+					<a href="#tldr">TL;DR</a>
+					<a href="#motivation">Motivation</a>
+					<a href="#question">Question</a>
+					<a href="#answer">Answer</a>
+					<a href="#citation">Citation</a>
+					<a href="https://arxiv.org/abs/2609.04637" target="_blank" rel="noreferrer">Paper ↗</a>
+				</div>
+			</div>
+		</nav>
+
+		<header class="hero">
+			<div class="hero-inner">
+				<p class="eyebrow">arXiv · Mechanistic Interpretability</p>
+				<h1 class="tracing-title">
+					<span>Tracing Audio Grounding and</span>
+					<span>Answer Selection in Audio LLMs</span>
+				</h1>
+				<p class="authors"><strong>Hyebin Cho</strong> · Suho Yoo · Jihoo Jung · Joon Son Chung</p>
+				<p class="affiliation">Korea Advanced Institute of Science and Technology (KAIST)</p>
+				<p class="venue">Preprint · 2026</p>
+				<div class="button-row">
+					<a class="button" href="https://arxiv.org/abs/2609.04637" target="_blank" rel="noreferrer">📄 Paper</a>
+				</div>
+			</div>
+		</header>
+
+		<main>
+			<section class="section white" id="tldr">
+				<div class="container wide">
+					<p class="section-label">TL;DR</p>
+					<p class="tldr">Connections from audio tokens to the textual answer choices are most important in early-to-middle layers.<br />Training mainly strengthens how those audio-informed choices determine the final answer in middle-to-late layers.</p>
+					<figure class="figure">
+						<div class="figure-frame">
+							<img src="../../images/projects/tracing/overview.png" alt="Diagram showing audio information reaching answer choices in early layers and influencing final prediction in later layers" />
+						</div>
+						<figcaption>Audio grounding and answer selection emerge at different stages of the model.</figcaption>
+					</figure>
+				</div>
+			</section>
+
+			<section class="section" id="motivation">
+				<div class="container wide">
+					<div class="section-intro">
+						<p class="section-label">Motivation</p>
+						<h2>A correct answer does not prove the model listened.</h2>
+						<p class="lead">An Audio LLM can exploit clues in the question or answer choices and predict correctly without using the recording.</p>
+					</div>
+
+					<div class="evidence-test" aria-label="Audio evidence test conditions">
+						<div class="evidence-condition"><strong>♫ Original audio</strong><span>Relevant evidence</span></div>
+						<div class="evidence-condition"><strong>― Silence</strong><span>No acoustic evidence</span></div>
+						<div class="evidence-condition"><strong>↝ Unrelated audio</strong><span>Wrong acoustic evidence</span></div>
+					</div>
+
+					<div class="paper-table-wrap">
+						<table class="paper-table">
+							<thead>
+								<tr><th>Model</th><th>Dataset</th><th>Zero-shot acc.</th><th>Fine-tuned acc.</th><th>Δ Accuracy</th><th>Δ Audio sensitivity</th></tr>
+							</thead>
+							<tbody>
+								<tr><td class="model-cell" rowspan="4">Qwen2-Audio</td><td class="dataset-cell">ADQA</td><td>36.9</td><td>51.1</td><td class="positive">+14.3</td><td class="positive">+9.3</td></tr>
+								<tr><td class="dataset-cell">MMAR</td><td>41.2</td><td>52.5</td><td class="positive">+11.3</td><td class="positive">+6.9</td></tr>
+								<tr><td class="dataset-cell">MMAU</td><td>59.7</td><td>58.6</td><td class="negative">−1.1</td><td class="negative">−9.1</td></tr>
+								<tr><td class="dataset-cell">MMSU</td><td>47.3</td><td>58.8</td><td class="positive">+11.5</td><td class="positive">+6.8</td></tr>
+								<tr><td class="model-cell" rowspan="4">Qwen2.5-Omni</td><td class="dataset-cell">ADQA</td><td>41.9</td><td>54.4</td><td class="positive">+12.5</td><td class="positive">+4.5</td></tr>
+								<tr><td class="dataset-cell">MMAR</td><td>53.7</td><td>65.7</td><td class="positive">+11.9</td><td class="positive">+6.7</td></tr>
+								<tr><td class="dataset-cell">MMAU</td><td>77.0</td><td>63.5</td><td class="negative">−13.5</td><td class="negative">−7.1</td></tr>
+								<tr><td class="dataset-cell">MMSU</td><td>54.1</td><td>64.9</td><td class="positive">+10.9</td><td class="positive">+6.0</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<p class="evidence-caption"><strong>Δ Audio sensitivity</strong> measures how much more performance drops without valid audio after training. All six improving settings become more audio-sensitive; MMAU is the negative-transfer exception.</p>
+				</div>
+			</section>
+
+			<section class="section white" id="question">
+				<div class="container">
+					<div class="question-box">
+						<p class="section-label">Question</p>
+						<h2>When training makes a model rely more on audio,<br />which internal step actually changes?</h2>
+						<p class="question-detail">Does training improve how audio enters the answer choices, or how those choices control the final prediction?</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="section" id="answer">
+				<div class="container wide">
+					<p class="section-label">Answer</p>
+					<h2>Training mainly strengthens the later decision step.</h2>
+
+					<div class="pathway-flow" aria-label="Audio grounding and answer selection pathway">
+						<div class="pathway-node">Audio<span>Acoustic evidence</span></div>
+						<div class="pathway-arrow"><span class="arrow-glyph">⟶</span><span class="arrow-label">Early–middle layers<br />already active</span></div>
+						<div class="pathway-node">Answer choices<span>Audio-informed options</span></div>
+						<div class="pathway-arrow trained"><span class="arrow-glyph">⟶</span><span class="arrow-label">Middle–late layers<br />strengthened by training</span></div>
+						<div class="pathway-node">Final answer<span>Selected option</span></div>
+					</div>
+
+					<div class="answer-grid">
+						<article class="answer-card">
+							<span class="answer-number">1</span>
+							<h3>The trained model uses audio more</h3>
+							<p>On every benchmark where accuracy improves, silence or unrelated audio causes a larger performance drop after training.</p>
+						</article>
+						<article class="answer-card">
+							<span class="answer-number">2</span>
+							<h3>Audio grounding was already present</h3>
+							<p>Audio shapes the candidate answers in early-to-middle layers both before and after training.</p>
+						</article>
+						<article class="answer-card">
+							<span class="answer-number">3</span>
+							<h3>The main change is answer selection</h3>
+							<p>Training strengthens how the audio-informed choices influence the final prediction in middle-to-late layers.</p>
+						</article>
+					</div>
+
+					<figure class="figure">
+						<div class="figure-frame">
+							<img src="../../images/projects/tracing/pathways.png" alt="Layer-wise attention knockout plots for Qwen2-Audio and Qwen2.5-Omni" />
+						</div>
+						<figcaption>Blocking a useful connection lowers the correct-answer probability.<br />Solid lines show early audio-to-choice grounding; dashed lines show the later choice-to-answer pathway that becomes much stronger after training.</figcaption>
+					</figure>
+				</div>
+			</section>
+
+			<section class="section white" id="citation">
+				<div class="container wide">
+					<p class="section-label">Citation</p>
+					<div class="citation-wrap">
+						<button class="copy-button" type="button" data-copy-target="#tracing-bibtex" aria-label="Copy BibTeX"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="5" y="5" width="8" height="8" rx="1.5"></rect><path d="M3 11H2.5A1.5 1.5 0 0 1 1 9.5v-7A1.5 1.5 0 0 1 2.5 1h7A1.5 1.5 0 0 1 11 2.5V3"></path></svg><span class="copy-label">Copy</span></button>
+						<pre class="citation" id="tracing-bibtex">@article{cho2026tracing,
+  title   = {Tracing Audio Grounding and Answer Selection in Audio LLMs},
+  author  = {Cho, Hyebin and Yoo, Suho and Jung, Jihoo and Chung, Joon Son},
+  journal = {arXiv preprint arXiv:2609.04637},
+  year    = {2026}
+}</pre>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer>© 2026 Hyebin Cho · Built as a concise visual guide to the paper.</footer>
+		<script src="../../assets/js/project-page.js"></script>
+	</body>
+</html>
