@@ -350,6 +350,11 @@ h3 {
 	margin: 0 auto;
 }
 
+.theme-tracing .figure {
+	max-width: 820px;
+	width: 100%;
+}
+
 figcaption {
 	color: var(--muted);
 	font-size: 0.88rem;
@@ -581,6 +586,36 @@ figcaption {
 .paper-table .negative {
 	color: #a4504a;
 	font-weight: 900;
+}
+
+.theme-tracing .paper-table {
+	font-size: 0.9rem;
+	table-layout: fixed;
+}
+
+.theme-tracing .paper-table .model-column {
+	width: 18%;
+}
+
+.theme-tracing .paper-table .dataset-column {
+	width: 12%;
+}
+
+.theme-tracing .paper-table .metric-column {
+	width: 17.5%;
+}
+
+.theme-tracing .paper-table th {
+	font-size: 0.78rem;
+	white-space: normal;
+}
+
+.theme-tracing .paper-table td {
+	font-variant-numeric: tabular-nums;
+}
+
+.theme-tracing .paper-table td:not(.positive):not(.negative):not(.model-cell):not(.dataset-cell) {
+	color: #566176;
 }
 
 .evidence-condition span {

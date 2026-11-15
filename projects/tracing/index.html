@@ -11,9 +11,10 @@
 		<meta property="og:image" content="https://hyebin-c.github.io/images/projects/tracing/overview.png" />
 		<meta property="og:url" content="https://hyebin-c.github.io/projects/tracing/" />
 		<meta property="og:type" content="website" />
+			<link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
 		<link rel="stylesheet" href="../../assets/css/project-page.css" />
 	</head>
-	<body>
+		<body class="theme-tracing">
 		<nav class="topbar" aria-label="Project navigation">
 			<div class="topbar-inner">
 				<a class="brand" href="../../">Hyebin Cho</a>
@@ -48,7 +49,7 @@
 			<section class="section white" id="tldr">
 				<div class="container wide">
 					<p class="section-label">TL;DR</p>
-					<p class="tldr">Connections from audio tokens to the textual answer choices are most important in early-to-middle layers.<br />Training mainly strengthens how those audio-informed choices determine the final answer in middle-to-late layers.</p>
+					<p class="tldr">Connections from audio tokens to the textual answer choices are most important in early-to-middle layers. Training mainly strengthens how those audio-informed choices determine the final answer in middle-to-late layers.</p>
 					<figure class="figure">
 						<div class="figure-frame">
 							<img src="../../images/projects/tracing/overview.png" alt="Diagram showing audio information reaching answer choices in early layers and influencing final prediction in later layers" />
@@ -74,6 +75,11 @@
 
 					<div class="paper-table-wrap">
 						<table class="paper-table">
+							<colgroup>
+								<col class="model-column" />
+								<col class="dataset-column" />
+								<col class="metric-column" span="4" />
+							</colgroup>
 							<thead>
 								<tr><th>Model</th><th>Dataset</th><th>Zero-shot acc.</th><th>Fine-tuned acc.</th><th>Δ Accuracy</th><th>Δ Audio sensitivity</th></tr>
 							</thead>
@@ -138,7 +144,7 @@
 						<div class="figure-frame">
 							<img src="../../images/projects/tracing/pathways.png" alt="Layer-wise attention knockout plots for Qwen2-Audio and Qwen2.5-Omni" />
 						</div>
-						<figcaption>Blocking a useful connection lowers the correct-answer probability.<br />Solid lines show early audio-to-choice grounding; dashed lines show the later choice-to-answer pathway that becomes much stronger after training.</figcaption>
+						<figcaption>Blocking a useful connection lowers the correct-answer probability. Solid lines show early audio-to-choice grounding;<br />dashed lines show the later choice-to-answer pathway that becomes much stronger after training.</figcaption>
 					</figure>
 				</div>
 			</section>
