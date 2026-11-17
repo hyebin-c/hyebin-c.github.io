@@ -269,6 +269,13 @@ h3 {
 	line-height: 1.45;
 }
 
+.pub-text .authors a,
+.pub-text .authors a:hover {
+	border-bottom: 0;
+	color: inherit;
+	text-decoration: none;
+}
+
 .pub-text .authors strong {
 	background: rgba(106, 123, 162, 0.12);
 	border-bottom: 0;
@@ -385,6 +392,231 @@ h3 {
 	display: block;
 }
 
+body.travel-map-open {
+	overflow: hidden;
+}
+
+.travel-map-overlay {
+	align-items: center;
+	background: rgba(25, 31, 42, 0.72);
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	left: 0;
+	padding: 24px;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 20000;
+}
+
+.travel-map-overlay[hidden] {
+	display: none;
+}
+
+.travel-map-panel {
+	background: #fbfcfe;
+	border: 1px solid #d8dee8;
+	border-radius: 18px;
+	box-shadow: 0 24px 70px rgba(20, 29, 45, 0.28);
+	max-width: 920px;
+	padding: 26px;
+	position: relative;
+	width: 100%;
+}
+
+.travel-map-heading {
+	margin-bottom: 18px;
+}
+
+.travel-map-heading span {
+	color: #5b6f9e;
+	display: block;
+	font-size: 0.68em;
+	font-weight: 800;
+	letter-spacing: 0.1em;
+	margin-bottom: 4px;
+	text-transform: uppercase;
+}
+
+.travel-map-heading h2 {
+	color: #202631;
+	font-size: 1.35em;
+	margin: 0 0 3px;
+}
+
+.travel-map-heading p {
+	color: #818a99;
+	font-size: 0.82em;
+	margin: 0;
+}
+
+.travel-map-close {
+	background: transparent;
+	border: 0;
+	box-shadow: none;
+	color: #657184;
+	cursor: pointer;
+	font: inherit;
+	font-size: 1.45em;
+	font-weight: 400;
+	height: 34px;
+	line-height: 1;
+	padding: 0;
+	position: absolute;
+	right: 18px;
+	top: 16px;
+	width: 34px;
+}
+
+.travel-map-close:hover,
+.travel-map-close:focus {
+	background: transparent;
+	color: #273a5f;
+}
+
+.travel-map-canvas {
+	background: linear-gradient(180deg, #f4f7fb 0%, #eef2f7 100%);
+	border: 1px solid #dce3ed;
+	border-radius: 14px;
+	position: relative;
+}
+
+.world-map {
+	display: block;
+	height: auto;
+	width: 100%;
+}
+
+.travel-pin {
+	appearance: none;
+	background: transparent;
+	border: 0;
+	box-shadow: none;
+	color: #273a5f;
+	cursor: pointer;
+	height: 22px;
+	line-height: 1;
+	margin: -11px 0 0 -11px;
+	padding: 0;
+	position: absolute;
+	width: 22px;
+	z-index: 2;
+}
+
+.travel-pin:hover,
+.travel-pin:focus {
+	background: transparent;
+	z-index: 5;
+}
+
+.travel-pin:focus-visible {
+	outline: 2px solid #273a5f;
+	outline-offset: 3px;
+}
+
+.travel-pin-dot {
+	background: #5b6f9e;
+	border: 3px solid #ffffff;
+	border-radius: 50%;
+	box-shadow: 0 0 0 3px rgba(91, 111, 158, 0.2), 0 3px 8px rgba(39, 58, 95, 0.28);
+	display: block;
+	height: 14px;
+	margin: 4px;
+	transition: transform 0.16s ease;
+	width: 14px;
+}
+
+.travel-pin:hover .travel-pin-dot,
+.travel-pin:focus .travel-pin-dot {
+	transform: scale(1.18);
+}
+
+.travel-preview {
+	background: #ffffff;
+	border: 1px solid #d8dee8;
+	border-radius: 10px;
+	box-shadow: 0 14px 32px rgba(30, 42, 62, 0.22);
+	left: calc(100% + 11px);
+	opacity: 0;
+	padding: 7px;
+	pointer-events: none;
+	position: absolute;
+	top: 50%;
+	transform: translate(5px, -50%);
+	transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s ease;
+	visibility: hidden;
+	width: 174px;
+}
+
+.travel-preview img {
+	background: #edf0f4;
+	border-radius: 6px;
+	display: block;
+	height: 112px;
+	image-rendering: auto;
+	object-fit: cover;
+	width: 100%;
+}
+
+.travel-pin.square-photo .travel-preview img {
+	aspect-ratio: 1;
+	height: auto;
+}
+
+.travel-preview > span {
+	color: #465166;
+	display: block;
+	font-size: 0.7em;
+	font-weight: 700;
+	line-height: 1.35;
+	padding: 6px 2px 1px;
+	text-align: left;
+}
+
+.travel-pin:hover .travel-preview,
+.travel-pin:focus .travel-preview {
+	opacity: 1;
+	transform: translate(0, -50%);
+	visibility: visible;
+}
+
+.travel-pin.preview-left .travel-preview {
+	left: auto;
+	right: calc(100% + 11px);
+	transform: translate(-5px, -50%);
+}
+
+.travel-pin.preview-left:hover .travel-preview,
+.travel-pin.preview-left:focus .travel-preview {
+	transform: translate(0, -50%);
+}
+
+.pin-seattle {
+	left: 16%;
+	top: 24%;
+}
+
+.pin-dublin {
+	left: 48.3%;
+	top: 20.5%;
+}
+
+.pin-budapest {
+	left: 55.3%;
+	top: 23.5%;
+}
+
+.pin-nagoya {
+	left: 88%;
+	top: 30.5%;
+}
+
+.pin-sydney {
+	left: 92%;
+	top: 69%;
+}
+
 #footer {
 	background: #f7f8fa;
 	color: #818a99;
@@ -408,6 +640,26 @@ h3 {
 	.activity-list li {
 		gap: 0.15em;
 		grid-template-columns: 1fr;
+	}
+
+	.travel-map-overlay {
+		padding: 12px;
+	}
+
+	.travel-map-panel {
+		padding: 20px 14px 16px;
+	}
+
+	.travel-map-heading {
+		padding-right: 34px;
+	}
+
+	.travel-preview {
+		width: 140px;
+	}
+
+	.travel-preview img {
+		height: 90px;
 	}
 
 }
